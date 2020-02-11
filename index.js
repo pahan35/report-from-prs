@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-const fetch = require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch')
 const yargs = require('yargs')
 
-const pkg = require('./package.json');
+const pkg = require('./package.json')
 
 async function fetchPRs(slug, state) {
   const githubToken = process.env.GITHUB_REPO_TOKEN
@@ -16,14 +16,18 @@ async function fetchPRs(slug, state) {
   const url = `https://api.github.com/repos/${slug}/pulls?state=${state}&sort=updated&direction=desc`
   const response = await fetch(url, {
     method: 'GET',
-    headers: {'Content-Type': 'application/json', Authorization: `token ${githubToken}`},
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `token ${githubToken}`,
+    },
   })
 
   return response.json()
 }
 
 const filterUserPRs = login => pr => pr.user.login === login
-const filterAfterDate = afterDate => pr => new Date(pr.merged_at || pr.updated_at) > afterDate
+const filterAfterDate = afterDate => pr =>
+  new Date(pr.merged_at || pr.updated_at) > afterDate
 
 function filterForDays(forLatestDays) {
   const afterDate = new Date()
@@ -31,15 +35,17 @@ function filterForDays(forLatestDays) {
   return filterAfterDate(afterDate)
 }
 
-const prsToList = prs => prs.reduce((carry, pr) => {
-  carry += `${pr.title} [pr] ${pr.html_url}\n`
-  return carry
-}, '')
+const prsToList = prs =>
+  prs.reduce((carry, pr) => {
+    carry += `${pr.title} [pr] ${pr.html_url}\n`
+    return carry
+  }, '')
 
-const getPRs = (login, repo, forLatestDays) => async state => prsToList(
+const getPRs = (login, repo, forLatestDays) => async state =>
+  prsToList(
     (await fetchPRs(repo, state))
       .filter(filterUserPRs(login))
-      .filter(filterForDays(forLatestDays))
+      .filter(filterForDays(forLatestDays)),
   )
 
 async function runCommand(options) {
@@ -58,7 +64,8 @@ function buildCommand(commandYargs) {
   return commandYargs.options({
     repo: {
       type: 'string',
-      description: 'Repo from which you want to take reports in [user/org]/repo format',
+      description:
+        'Repo from which you want to take reports in [user/org]/repo format',
     },
     login: {
       type: 'string',
@@ -72,13 +79,13 @@ function buildCommand(commandYargs) {
   })
 }
 
-
 const argv = yargs
   .help('help')
   .version(pkg.version)
   .usage('rfp <command> <options>')
-  .command('Report', 'Prepare report from repo PRs', commandYargs => buildCommand(commandYargs))
-  .argv
+  .command('Report', 'Prepare report from repo PRs', commandYargs =>
+    buildCommand(commandYargs),
+  ).argv
 
 if (argv.repo && argv.login) {
   runCommand(argv)
