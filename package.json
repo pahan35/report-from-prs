@@ -1,12 +1,25 @@
 {
-  "name": "report-from-prs",
-  "version": "1.0.0",
+  "name": "@report-from-prs/cli",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pahan35/report-from-prs.git"
+  },
+  "author": "Pavlo Zhukov",
+  "bin": {
+    "report-from-prs": "./index.js",
+    "rfp": "./index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "yargs": "^15.1.0"
+  }
 }
