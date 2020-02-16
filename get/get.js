@@ -27,7 +27,6 @@ function buildCommand(commandYargs) {
          Possible replacements:
           [title] - PR title
           [htmlUrl] - Link to PR in Github`,
-      default: '[title] [pr] [htmlUrl]',
     },
   })
 }
@@ -81,7 +80,7 @@ async function runCommand(options) {
     repo,
     forDays = 7,
     reporter = 'console',
-    template = '[title] [pr] [htmlUrl]',
+    template,
   } = options
   const carriedGetPRs = getPRs(login, repo, forDays)
   const sections = []
