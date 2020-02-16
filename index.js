@@ -35,28 +35,24 @@ function filterForDays(forLatestDays) {
   return filterAfterDate(afterDate)
 }
 
-const prsToList = prs =>
-  prs.reduce((carry, pr) => {
-    carry += `${pr.title} [pr] ${pr.html_url}\n`
-    return carry
-  }, '')
-
 const getPRs = (login, repo, forLatestDays) => async state =>
-  prsToList(
-    (await fetchPRs(repo, state))
-      .filter(filterUserPRs(login))
-      .filter(filterForDays(forLatestDays)),
-  )
+  (await fetchPRs(repo, state))
+    .filter(filterUserPRs(login))
+    .filter(filterForDays(forLatestDays))
 
 async function runCommand(options) {
-  const {login, repo, forDays = 7} = options
+  const {
+    login,
+    repo,
+    forDays = 7,
+    reporter = 'console',
+    template = '[title] [pr] [htmlUrl]',
+  } = options
   const carriedGetPRs = getPRs(login, repo, forDays)
   const openPRs = await carriedGetPRs('open')
   const closedPRs = await carriedGetPRs('closed')
-  console.log('WIP')
-  console.log(openPRs)
-  console.log('Done')
-  console.log(closedPRs)
+  const {report} = require(`./reporters/${reporter}`)
+  report({closed: closedPRs, open: openPRs, template})
   // TODO(pavlo): Render as HTML
 }
 
@@ -75,6 +71,16 @@ function buildCommand(commandYargs) {
       type: 'number',
       description: 'Number of days before today to get report',
       default: 7,
+    },
+    reporter: {
+      type: 'string',
+      description: 'Selected reporter',
+      default: 'console',
+    },
+    template: {
+      type: 'string',
+      description: 'Template to convert PR to string',
+      default: '[title] [pr] [htmlUrl]',
     },
   })
 }
