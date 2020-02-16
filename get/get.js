@@ -18,8 +18,8 @@ function buildCommand(commandYargs) {
     },
     reporter: {
       description: 'Selected reporter',
-      choices: ['console'],
-      default: 'console',
+      choices: ['console', 'html'],
+      default: 'html',
     },
     template: {
       type: 'string',
@@ -75,13 +75,7 @@ const getPRs = (login, repo, forLatestDays) => async state =>
     .filter(filterForDays(forLatestDays))
 
 async function runCommand(options) {
-  const {
-    login,
-    repo,
-    forDays = 7,
-    reporter = 'console',
-    template,
-  } = options
+  const {login, repo, forDays = 7, reporter = 'console', template} = options
   const carriedGetPRs = getPRs(login, repo, forDays)
   const sections = []
   for (const [title, state] of [
@@ -98,7 +92,6 @@ async function runCommand(options) {
     sections,
     template,
   })
-  // TODO(pavlo): Render as HTML
 }
 
 module.exports = {
