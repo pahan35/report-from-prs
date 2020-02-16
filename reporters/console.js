@@ -1,10 +1,16 @@
 const {prsToString} = require('../utils')
 
 function report({closed, open, template}) {
-  console.log('WIP')
-  console.log(prsToString(open, template))
-  console.log('Done')
-  console.log(prsToString(closed, template))
+  const sections = [
+    ['WIP', open],
+    ['Done', closed],
+  ]
+  for (const [title, prs] of sections) {
+    if (prs.length) {
+      console.log(title)
+      console.log(prsToString(prs, template))
+    }
+  }
 }
 
 module.exports = {
