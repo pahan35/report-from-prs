@@ -84,10 +84,21 @@ async function runCommand(options) {
     template = '[title] [pr] [htmlUrl]',
   } = options
   const carriedGetPRs = getPRs(login, repo, forDays)
-  const openPRs = await carriedGetPRs('open')
-  const closedPRs = await carriedGetPRs('closed')
+  const sections = []
+  for (const [title, state] of [
+    ['WIP', 'open'],
+    ['Done', 'closed'],
+  ]) {
+    const prs = await carriedGetPRs(state)
+    if (prs.length) {
+      sections.push([title, prs])
+    }
+  }
   const {report} = require(`../reporters/${reporter}`)
-  report({closed: closedPRs, open: openPRs, template})
+  report({
+    sections,
+    template,
+  })
   // TODO(pavlo): Render as HTML
 }
 
