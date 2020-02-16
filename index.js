@@ -21,6 +21,14 @@ async function fetchPRs(slug, state) {
       Authorization: `token ${githubToken}`,
     },
   })
+  if (!response.ok) {
+    if (response.status === 404) {
+      throw new Error(
+        `Provided Github token has no access to provided repo ${slug}`,
+      )
+    }
+    throw new Error('Unknown problem on prs retrieving from Github')
+  }
 
   return response.json()
 }
