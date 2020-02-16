@@ -17,13 +17,16 @@ function buildCommand(commandYargs) {
       default: 7,
     },
     reporter: {
-      type: 'string',
       description: 'Selected reporter',
+      choices: ['console'],
       default: 'console',
     },
     template: {
       type: 'string',
-      description: 'Template to convert PR to string',
+      description: `Template to convert PR to string.
+         Possible replacements:
+          [title] - PR title
+          [htmlUrl] - Link to PR in Github`,
       default: '[title] [pr] [htmlUrl]',
     },
   })
