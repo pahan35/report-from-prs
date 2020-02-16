@@ -1,5 +1,5 @@
 {
-  "name": "@report-from-prs/cli",
+  "name": "report-from-prs",
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
