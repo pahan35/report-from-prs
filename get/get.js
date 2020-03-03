@@ -69,14 +69,15 @@ function filterForDays(forLatestDays) {
   return filterAfterDate(afterDate)
 }
 
-const getPRs = (login, repo, forLatestDays) => async state =>
+const getPRs = ({login, repo, forDays: forLatestDays}) => async state =>
   (await fetchPRs(repo, state))
     .filter(filterUserPRs(login))
     .filter(filterForDays(forLatestDays))
 
 async function runCommand(options) {
   const {login, repo, forDays = 7, reporter = 'console', template} = options
-  const carriedGetPRs = getPRs(login, repo, forDays)
+  const source = {login, repo, forDays}
+  const carriedGetPRs = getPRs(source)
   const sections = []
   for (const [title, state] of [
     ['WIP', 'open'],
@@ -90,6 +91,7 @@ async function runCommand(options) {
   const {report} = require(`../reporters/${reporter}`)
   report({
     sections,
+    source,
     template,
   })
 }

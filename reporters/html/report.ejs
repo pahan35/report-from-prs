@@ -5,9 +5,15 @@
       <meta name="viewport"
              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Report</title>
+      <title>Reports for <%= source.login %> for repo <%= source.repo%> for <%= source.forDays%> day(s)</title>
   </head>
   <body>
+    <h1>
+        Reports for
+        <a href="https://github.com/<%= source.login %>" target="_blank" rel="noopener noreferrer"><%= source.login %></a>
+        for repo <a href="https://github.com/<%= source.repo %>" target="_blank" rel="noopener noreferrer"><%= source.repo %></a>
+        for <%= source.forDays %> day(s) (since <%= formatDate(source.range.since) %> till <%= formatDate(source.range.now) %>)
+    </h1>
     <% sections.forEach(function([title, prs]){ %>
       <h2><%= title %></h2>
       <ul>
