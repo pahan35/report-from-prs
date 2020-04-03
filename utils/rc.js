@@ -52,7 +52,7 @@ function findRcFileInDirectory(dir) {
 }
 
 /**
- * @param {string} startDir
+ * @param {string?} startDir
  * @param {{recursive: boolean?}} opts
  * @return {string|undefined}
  */
