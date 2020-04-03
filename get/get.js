@@ -80,8 +80,8 @@ async function runCommand(options) {
   const carriedGetPRs = getPRs(source)
   const sections = []
   for (const [title, state] of [
-    ['WIP', 'open'],
     ['Done', 'closed'],
+    ['WIP', 'open'],
   ]) {
     const prs = await carriedGetPRs(state)
     if (prs.length) {
