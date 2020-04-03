@@ -41,11 +41,19 @@ Options:
                                                                         [string]
   --login     User login for which you want to collect report           [string]
   --forDays   Number of days before today to get report    [number] [default: 7]
-  --reporter  Selected reporter        [choices: "console"] [default: "console"]
+  --reporter  Selected reporter   [choices: "console", "html"] [default: "html"]
   --template  Template to convert PR to string.
-                  Possible replacements:
-                      [title] - PR title
-                      [htmlUrl] - Link to PR in Github
-                                    [string] [default: "[title] [pr] [htmlUrl]"]
-              
+              Possible replacements:
+              [title] - PR title
+              [htmlUrl] - Link to PR in Github                          [string]
 ```
+
+## Reporters
+
+### `console`
+
+Default template is `'[title] [pr] [htmlUrl]'`
+
+### `html`
+
+Default template is `'[title] [<a href="[htmlUrl]">pr<a>]'`
