@@ -57,3 +57,11 @@ Default template is `'[title] [pr] [htmlUrl]'`
 ### `html`
 
 Default template is `'[title] [<a href="[htmlUrl]">pr<a>]'`
+
+## rc file
+
+Now you can create rc file to avoid constantly passing the same args during calls
+
+You can find example of rc file [here](.rfprc.json)
+
+The list of supported file names and formats is [here](utils/rc.js) at line 22

@@ -1,13 +1,20 @@
 {
   "name": "report-from-prs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Prepare report with created/updated and merged PRs for provided days count",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["cli", "github", "productivity", "prs", "report", "reporting"],
+  "keywords": [
+    "cli",
+    "github",
+    "productivity",
+    "prs",
+    "report",
+    "reporting"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pahan35/report-from-prs.git"
@@ -21,9 +28,11 @@
   "dependencies": {
     "ejs": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
+    "js-yaml": "^3.13.1",
     "open": "^7.0.2",
     "temp-write": "^4.0.0",
-    "yargs": "^15.1.0"
+    "yargs": "^15.1.0",
+    "yargs-parser": "^18.1.2"
   },
   "devDependencies": {
     "eslint": "^6.8.0",

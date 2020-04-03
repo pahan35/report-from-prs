@@ -1,3 +1,5 @@
 .eslintrc
 .idea
 .prettierrc.yaml
+.report-from-prs.*
+.rfprc.*
