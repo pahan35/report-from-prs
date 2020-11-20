@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`html report 1`] = `
+"<!doctype html>
+<html lang=\\"en\\">
+  <head>
+      <meta charset=\\"UTF-8\\">
+      <meta name=\\"viewport\\"
+             content=\\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\\">
+      <meta http-equiv=\\"X-UA-Compatible\\" content=\\"ie=edge\\">
+      <title>Reports for  for repo  for 7 day(s)</title>
+  </head>
+  <body>
+    <h1>
+        Reports for
+        <a href=\\"https://github.com/\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\"></a>
+        for repo <a href=\\"https://github.com/\\" target=\\"_blank\\" rel=\\"noopener noreferrer\\"></a>
+        for 7 day(s) (since 10/18/2020, 5:35:35 PM till 10/25/2020, 5:35:35 PM)
+    </h1>
+    
+      <h2>Done</h2>
+      <ul>
+          
+            <li>feat: feature 1 [<a href=\\"https://github.com/org/repo/pull/35\\">pr<a>]</li>
+          
+            <li>fix: critical bug [<a href=\\"https://github.com/org/repo/pull/135\\">pr<a>]</li>
+          
+      </ul>
+    
+      <h2>WIP</h2>
+      <ul>
+          
+            <li>feat: huge feature in progress [<a href=\\"https://github.com/org/repo/pull/5\\">pr<a>]</li>
+          
+            <li>fix: low priority bug [<a href=\\"https://github.com/org/repo/pull/235\\">pr<a>]</li>
+          
+      </ul>
+    
+  </body>
+</html>
+"
+`;

@@ -1,5 +1,7 @@
 {
   "extends": [
+    "plugin:jest/recommended",
+    "plugin:jest-formatting/recommended",
     "eslint:recommended",
     "google",
     "plugin:prettier/recommended",
