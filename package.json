@@ -1,6 +1,6 @@
 {
   "name": "report-from-prs",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Prepare report with created/updated and merged PRs for provided days count",
   "main": "index.js",
   "scripts": {
