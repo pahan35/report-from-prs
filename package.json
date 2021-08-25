@@ -4,6 +4,7 @@
   "description": "Prepare report with created/updated and merged PRs for provided days count",
   "main": "index.js",
   "scripts": {
+    "lint": "npx eslint './**/*.js' index.js",
     "start": "node index.js",
     "test": "jest"
   },
