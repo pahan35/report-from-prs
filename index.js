@@ -23,7 +23,7 @@ async function run() {
     .help('help')
     .version(pkg.version)
     .usage('rfp <command> <options>')
-    .command('get', 'Prepare report from repo PRs', commandYargs =>
+    .command('get', 'Prepare report from repo PRs', (commandYargs) =>
       get.buildCommand(commandYargs),
     )
     .config(...createYargsConfigArguments()).argv

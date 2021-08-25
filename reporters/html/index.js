@@ -18,7 +18,7 @@ async function report({
     since,
   }
   const html = await ejs.renderFile(path.resolve(__dirname, './report.ejs'), {
-    formatDate: date => date.toLocaleString(),
+    formatDate: (date) => date.toLocaleString(),
     prToString,
     sections,
     source,

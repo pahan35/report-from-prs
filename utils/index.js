@@ -6,7 +6,7 @@ function prToString(pr, template) {
 
 function prsToString(prs, template) {
   return prs
-    .map(pr =>
+    .map((pr) =>
       template
         .replace(/\[title]/g, pr.title)
         .replace(/\[htmlUrl]/g, pr.html_url),

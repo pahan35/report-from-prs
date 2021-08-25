@@ -59,8 +59,8 @@ async function fetchPRs(slug, state) {
   return response.json()
 }
 
-const filterUserPRs = login => pr => pr.user.login === login
-const filterAfterDate = afterDate => pr =>
+const filterUserPRs = (login) => (pr) => pr.user.login === login
+const filterAfterDate = (afterDate) => (pr) =>
   new Date(pr.merged_at || pr.updated_at) > afterDate
 
 function filterForDays(forLatestDays) {
@@ -69,10 +69,12 @@ function filterForDays(forLatestDays) {
   return filterAfterDate(afterDate)
 }
 
-const getPRs = ({login, repo, forDays: forLatestDays}) => async state =>
-  (await fetchPRs(repo, state))
-    .filter(filterUserPRs(login))
-    .filter(filterForDays(forLatestDays))
+const getPRs =
+  ({login, repo, forDays: forLatestDays}) =>
+  async (state) =>
+    (await fetchPRs(repo, state))
+      .filter(filterUserPRs(login))
+      .filter(filterForDays(forLatestDays))
 
 async function runCommand(options) {
   const {login, repo, forDays = 7, reporter = 'console', template} = options
